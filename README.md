@@ -1,3 +1,101 @@
+ Welcome to the Intel Curated Repo of gnutls
+============================================
+
+You can find the full, unaltered Readme.MD from the gnutls project
+below.
+
+This repo contains the source for branches of gnutls that are curated
+and updated to contain all security fixes. This includes older versions that have
+had security fixes backported to them.
+
+Branches with Intel fixes (and Intel version numbers) have been created for all
+supported releases. The current supported branches are:
+- [3.8.7-Intel](https://github.com/Marcin-Narzynski/dellinger-03.git/tree/3.8.7-Intel) - [EOL December 19 2026](https://github.com/Marcin-Narzynski/dellinger-03/milestone/1)
+
+- [3.8.6-Intel](https://github.com/Marcin-Narzynski/dellinger-03.git/tree/3.8.6-Intel) - [EOL July 03 2026](https://github.com/Marcin-Narzynski/dellinger-03/milestone/2)
+
+- [3.7.11-Intel](https://github.com/Marcin-Narzynski/dellinger-03.git/tree/3.7.11-Intel) - [EOL May 23 2026](https://github.com/Marcin-Narzynski/dellinger-03/milestone/3)
+
+- [3.8.5-Intel](https://github.com/Marcin-Narzynski/dellinger-03.git/tree/3.8.5-Intel) - [EOL April 04 2026](https://github.com/Marcin-Narzynski/dellinger-03/milestone/4)
+
+- [3.8.4-Intel](https://github.com/Marcin-Narzynski/dellinger-03.git/tree/3.8.4-Intel) - [EOL March 19 2026](https://github.com/Marcin-Narzynski/dellinger-03/milestone/5)
+
+- [3.8.3-Intel](https://github.com/Marcin-Narzynski/dellinger-03.git/tree/3.8.3-Intel) - [EOL January 16 2026](https://github.com/Marcin-Narzynski/dellinger-03/milestone/6)
+
+- [3.8.2-Intel](https://github.com/Marcin-Narzynski/dellinger-03.git/tree/3.8.2-Intel) - [EOL November 15 2025](https://github.com/Marcin-Narzynski/dellinger-03/milestone/7)
+
+- [3.7.10-Intel](https://github.com/Marcin-Narzynski/dellinger-03.git/tree/3.7.10-Intel) - [EOL August 03 2025](https://github.com/Marcin-Narzynski/dellinger-03/milestone/8)
+
+- [3.8.1-Intel](https://github.com/Marcin-Narzynski/dellinger-03.git/tree/3.8.1-Intel) - [EOL August 04 2025](https://github.com/Marcin-Narzynski/dellinger-03/milestone/9)
+
+Compiling:
+
+Compile, test, and install gnutls:
+
+[string]
+[string]
+[string]
+[string]
+
+The following flags were set for IPAS compliance:
+compiler -D_FORTIFY_SOURCE=2 -fstack-protector-strong -fPIE -fPIC -fcf-protection=full -fstack-clash-protection
+linker -Wl,-z,relro,-z,now
+
+***FAQ***
+
+*How do I know all CVEs are fixed for supported branches?
+
+That's a great question. We do everything with GitHub Issues. If you want to see what CVEs have been fixed for what
+branches, just search on closed issues.
+
+*How do you know you haven't broken anything with the branches where fixes have been backported?
+
+Before commits are made to our repository, we ensure all available unit tests pass. This of course
+doesn't mean something hasn't broken; just that there isn't a unit test that detects it. If you feel you are getting
+an incorrect result, please file an Issue (https://github.com/Marcin-Narzynski/dellinger-03.git/issues).
+
+*What do you do to prepare a branch for curation?
+
+We start with the raw upstream source. Once we have that, we create a branch for our curated changes. That branch is always called "\<upstream branch or tag name\>-Intel". Once the branch is created, we make two Intel specific changes:
+- Embed an Intelized version number (ex. "gnutls 3.8.7-Intel")
+- Change the default release build options to create a binary compliant with IPAS compiler flag expectations
+
+After this, any relevant CVEs are backported to the branch.
+
+*What happens when a new CVE is published for gnutls?
+
+The steps are simple:
+- The curation team will determine which branches are affected by the new CVE
+- GitHub Issues will be created for each affected branch
+- When the branches are patched, the corresponding Issues will be closed with information about which commit
+fixes the issue.
+
+### How long will you be supporting these branches?
+
+Each branch is supported for 2-years from its release date. The exceptions to this are:
+
+1. The vendor is maintaining that product for longer than our two year support window. In that case we will support it for as long as the vendor supports their product.
+2. There are no new branch releases. I.e if there latest release is further than 2-years old we will continue to support it until a new release is made.
+3. The vendor is maintaining the branch for less than 2-years. In that case we will follow suit and only support it as long as they support it, despite it being less than 2 years.
+
+To take any guesswork out of how long things will be kept up to date, Milestones (https://github.com/Marcin-Narzynski/dellinger-03.git/milestones) have been created for each individually supported branch if it goes EOL before the upstream gnutls branch. If an internal release doesn't fall into that category, it is covered by blanket milestones corresponding to upstream support.
+
+
+*The version of gnutls I want support for isn't here.  Can you support it?
+
+File a New Issue (https://github.com/Marcin-Narzynski/dellinger-03.git/issues/new/choose) and let's talk.
+
+*Is this only source or are you also supplying binaries?
+
+At this particular time, we are only supply source. If you want binaries, please file a New Issue (https://github.com/Marcin-Narzynski/dellinger-03.git/issues/new/choose).
+
+*I have a question that isn't answered here.  What do I do?
+
+Please file a New Issue: (https://github.com/Marcin-Narzynski/dellinger-03.git/issues/new/choose)!
+
+----------------------------------------------------------------------------------------------------------
+
+
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/330/badge)](https://bestpractices.coreinfrastructure.org/projects/330)
 
 |Branch|CI system|Status|Test suite coverage|Fuzzer coverage|
